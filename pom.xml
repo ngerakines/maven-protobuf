@@ -9,7 +9,7 @@
 
 	<groupId>com.socklabs</groupId>
 	<artifactId>maven-protobuff</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 
 	<packaging>maven-plugin</packaging>
 
