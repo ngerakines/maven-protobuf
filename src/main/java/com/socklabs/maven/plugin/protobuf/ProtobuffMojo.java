@@ -1,15 +1,5 @@
-package org.socklabs.maven.plugin.protobuf;
+package com.socklabs.maven.plugin.protobuf;
 
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
@@ -21,6 +11,16 @@ import org.codehaus.plexus.util.cli.CommandLineException;
 import org.codehaus.plexus.util.cli.CommandLineUtils;
 import org.codehaus.plexus.util.cli.Commandline;
 import org.codehaus.plexus.util.io.RawInputStreamFacade;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 /**
  * Extract and compile protocol buffer from maven dependencies.
@@ -209,7 +209,7 @@ public class ProtobuffMojo extends AbstractMojo {
 		if (verbose) {
 			getLog().info("Setting default include paths: " + defaultPaths.toString());
 		}
-		return defaultPaths.toArray(new String[0]);
+		return defaultPaths.toArray(new String[defaultPaths.size()]);
 	}
 
 	/**
@@ -244,7 +244,7 @@ public class ProtobuffMojo extends AbstractMojo {
 		final CommandLineUtils.StringStreamConsumer error = new CommandLineUtils.StringStreamConsumer();
 		final Commandline cl = new Commandline();
 		cl.setExecutable(executable);
-		cl.addArguments(commandParams.toArray(new String[0]));
+		cl.addArguments(commandParams.toArray(new String[commandParams.size()]));
 		if (verbose) {
 			getLog().info(cl.toString());
 		}
